@@ -14,7 +14,15 @@ articles = [
 
 
 def blog_home(request):
-    return render(request, 'home.html', {'articles': articles})
+    context = {'articles': articles}
+    return render(request, 'home.html', context)
 
-def article(request):
-    return render(request, 'aricle.html')
+
+def article(request, id):
+    article = None
+    for i in articles:
+        if i['id'] == int(id):
+            article = i
+
+    context = {'article ' : article}
+    return render(request, 'article.html', context)
