@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content%}
+<h1>BLOG</h1>
+
+<div>
+    <ul>
+        {% for article in articles%}
+            <li>{{article.id}} -- {{article.title}}</li>    
+        {% endfor%}
+    </ul>
+
+</div>
+
+
+{% endblock content%}
