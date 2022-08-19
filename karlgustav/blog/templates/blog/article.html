@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% block content%}
+ 
+
+<h1>{{art.title}}</h1>
+<h2>{{art.id}} - @{{art.host.username}}</h2>
+<div>
+    
+   {{art.text}}
+</div>
+
+
+{% endblock content%}
