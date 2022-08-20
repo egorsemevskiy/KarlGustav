@@ -2,18 +2,31 @@
 {% block content%}
 <h1>BLOG</h1>
 
-<div>
+<style>
+    .blog-container{
+        display : grid;
+        grid-template-columns:1fr 3fr;
+    }
+</style>
+
+<div class="blog-container">
+    <div>
+        <h2>Side Menu</h2>
+    </div>
+    <div>
     <a href="{% url 'create-article' %}">create-room</a>
     <ul>
         {% for article in articles%}
             <li>
                 <div>@{{article.host.username}}</div>
                 <div>{{article.id}} <a href="{%  url 'article' article.id  %}" >{{article.title}}</a></div>
-                <div><a href="{% url 'update-article' article.id%}">Edit</a><a href="{% url 'delete-article' article.id%}">Delete</a></div>
+                {% if request.user == article.host %}
+                <div><a href="{% url 'update-article' article.id%}">Edit</a><span>   </span><a href="{% url 'delete-article' article.id%}">Delete</a></div>
+                {% endif%}
                 </li>    
         {% endfor%}
     </ul>
-
+</div>
 </div>
 
 
